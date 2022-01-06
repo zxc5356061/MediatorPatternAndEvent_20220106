@@ -10,22 +10,22 @@ namespace MediatorPattern_20220106
     {
         static void Main(string[] args)
         {
-            //Member member1 = new Member();
-            //member1.DataChanged += Member_DataChanged;
-            //member1.Name = "Tom";
+            Member member1 = new Member();//1
+            member1.DataChanged += Member_DataChanged;//訂閱Member_DataChanged事件
+            member1.Name = "Tom";//3
 
             //Member member2 = new Member();
             //member2.DataChanged += Member_DataChanged;
             //member2.Name = "Amy";
 
-            VIP vIP = new VIP();
-            vIP.DataChanged += Member_DataChanged;
-            vIP.Name = "我爸連戰";
+            //VIP vIP = new VIP();
+            //vIP.DataChanged += Member_DataChanged;
+            //vIP.Name = "我爸連戰";
         }
 
         private static void Member_DataChanged(Member sender, string message)
         {
-            Console.WriteLine(sender.Name +" "+message);
+            Console.WriteLine(sender.Name +" "+message);//5
         }
     }
 
@@ -41,22 +41,40 @@ namespace MediatorPattern_20220106
 
         public string Name
         {
-            get { return _Name; }
+            get { return _Name; }//4
             set
             {
                 _Name = value;
 
-                if (DataChanged != null)
-                {
-                    //"this" == To send class Member itselt to "delegate void DataChangedHandler();"
-                    DataChanged(this, "This event happened.");
-                }
+                //if (DataChanged != null)
+                //{
+                //    //"this" == To send class Member itselt to "delegate void DataChangedHandler();"
+                //    DataChanged(this, "This event happened.");
+                //}
+                OnDataChanged("This event just happened!");//7
+            }
+        }
+
+        protected virtual void OnDataChanged(string message)
+        {
+            if(DataChanged != null)
+            {
+                DataChanged(this, message);//6
             }
         }
     }
 
-    class VIP : Member
-    {
-
-    }
+    //class VIP : Member
+    //{
+    //    private string _Email;
+    //    public string Email
+    //    {
+    //        get { return _Email; }
+    //        set
+    //        {
+    //            _Email = value;
+    //            OnDataChanged("This event happened.");
+    //        }
+    //    }
+    //}
 }
