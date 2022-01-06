@@ -8,6 +8,9 @@ namespace MediatorPattern_20220106
 {
     internal class Program
     {
+        /// <summary>
+        /// Member_DataChanged事件有OnMember_DataChanged方法
+        /// </summary>
         static void Main(string[] args)
         {
             Member member1 = new Member();
@@ -45,11 +48,11 @@ namespace MediatorPattern_20220106
             set
             {
                 _Name = value;
-                OnDataChanged("This event just happened!");
+                OnMember_DataChanged("This event just happened!");
             }
         }
 
-        protected virtual void OnDataChanged(string message)
+        protected virtual void OnMember_DataChanged(string message)
         {
             if(DataChanged != null)
             {
