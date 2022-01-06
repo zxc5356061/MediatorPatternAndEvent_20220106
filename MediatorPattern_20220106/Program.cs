@@ -57,7 +57,7 @@ namespace MediatorPattern_20220106
             if(DataChanged != null)
             {
                 //"this" == To send class Member itselt to "delegate void DataChangedHandler();"
-                DataChanged(this, message);
+                DataChanged(this, message);//transfer ["Member sender", message] to Member_DataChanged()
             }
         }
     }
