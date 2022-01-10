@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ConsoleApp2
 {
     /// <summary>
-    /// Mediator pattern using event.
+    /// Mediator pattern using events.
     /// </summary>
     internal class Program
     {
