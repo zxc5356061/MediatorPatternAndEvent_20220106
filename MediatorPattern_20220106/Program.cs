@@ -17,13 +17,13 @@ namespace MediatorPattern_20220106
             member1.DataChanged += Member_DataChanged;//訂閱Member_DataChanged事件
             member1.Name = "Tom";
 
-            //Member member2 = new Member();
-            //member2.DataChanged += Member_DataChanged;
-            //member2.Name = "Amy";
+            Member member2 = new Member();
+            member2.DataChanged += Member_DataChanged;//訂閱Member_DataChanged事件
+            member2.Name = "Amy";
 
-            //VIP vIP = new VIP();
-            //vIP.DataChanged += Member_DataChanged;
-            //vIP.Name = "我爸連戰";
+            VIP vIP = new VIP();
+            vIP.DataChanged += Member_DataChanged;//訂閱Member_DataChanged事件
+            vIP.Name = "我爸連戰";
         }
 
         private static void Member_DataChanged(Member sender, string message)
@@ -62,17 +62,18 @@ namespace MediatorPattern_20220106
         }
     }
 
-    //class VIP : Member
-    //{
-    //    private string _Email;
-    //    public string Email
-    //    {
-    //        get { return _Email; }
-    //        set
-    //        {
-    //            _Email = value;
-    //            OnDataChanged("This event happened.");
-    //        }
-    //    }
-    //}
+    class VIP : Member
+    {
+        private string _Email;
+        public string Email
+        {
+            get { return _Email; }
+            set
+            {
+                _Email = value;
+                OnMember_DataChanged("This event happened.");
+                
+            }
+        }
+    }
 }
